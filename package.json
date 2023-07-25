@@ -24,11 +24,14 @@
     "prettier": "prettier --write \"src/**/*.{ts,tsx,js,mdx}\"",
     "test": "vitest",
     "test:cov": "vitest run --coverage",
+    "test-storybook": "test-storybook",
     "prepare": "husky install",
     "prepack": "json -f package.json -I -e \"delete this.devDependencies; delete this.dependencies\"",
     "chromatic": "npx chromatic --project-token=$CHROMATIC_TOKEN"
   },
   "dependencies": {
+    "@storybook/jest": "^0.1.0",
+    "@storybook/test-runner": "^0.11.0",
     "chromatic": "^6.20.0",
     "react": "18.2.0",
     "react-dom": "18.2.0"

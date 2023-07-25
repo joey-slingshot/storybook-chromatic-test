@@ -1,8 +1,9 @@
 import React from 'react'
+import { Meta, StoryFn } from '@storybook/react'
+import { expect } from '@storybook/jest'
+import { within } from '@storybook/testing-library'
 import { AtButton, AtButtonProps, AT_BUTTON_VARIANT } from '.'
 import { objectValuesToControls } from '../../../storybook-utils'
-import { Meta } from '@storybook/react'
-import { StoryFn } from '@storybook/react'
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof AtButton> = {
@@ -26,6 +27,14 @@ Primary.args = {
   label: 'Button',
   variant: 'PRIMARY',
   onClick: () => alert('clicking primary'),
+}
+
+Primary.play = async ({ canvasElement }) => {
+  let canvas = within(canvasElement)
+  let primaryButton = await canvas.getByRole('button', { name: /Button/i })
+
+  await expect(primaryButton.innerText).toBe('Button')
+  await expect(primaryButton.className).toContain('bg-green-200')
 }
 
 export const Secondary = Template.bind({})
