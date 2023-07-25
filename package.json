@@ -27,7 +27,7 @@
     "test-storybook": "test-storybook",
     "prepare": "husky install",
     "prepack": "json -f package.json -I -e \"delete this.devDependencies; delete this.dependencies\"",
-    "chromatic": "npx chromatic --project-token=$CHROMATIC_TOKEN"
+    "chromatic": "npx chromatic --project-token=$CHROMATIC_PROJECT_TOKEN"
   },
   "dependencies": {
     "@storybook/jest": "^0.1.0",
