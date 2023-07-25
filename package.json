@@ -25,7 +25,8 @@
     "test": "vitest",
     "test:cov": "vitest run --coverage",
     "prepare": "husky install",
-    "prepack": "json -f package.json -I -e \"delete this.devDependencies; delete this.dependencies\""
+    "prepack": "json -f package.json -I -e \"delete this.devDependencies; delete this.dependencies\"",
+    "chromatic": "npx chromatic --project-token=$CHROMATIC_TOKEN"
   },
   "dependencies": {
     "chromatic": "^6.20.0",
@@ -84,5 +85,7 @@
     "*.{ts,tsx,js,jsx,json,css,md}": [
       "prettier -w"
     ]
-  }
+  },
+  "readme": "README.md",
+  "_id": "vite-component-library-template@2.0.0"
 }
