@@ -2,6 +2,7 @@ import React from 'react'
 import { Meta, StoryFn } from '@storybook/react'
 import { expect } from '@storybook/jest'
 import { within } from '@storybook/testing-library'
+
 import { AtButton, AtButtonProps, AT_BUTTON_VARIANT } from '.'
 import { objectValuesToControls } from '../../../storybook-utils'
 
@@ -53,4 +54,13 @@ export const Disabled = Template.bind({})
 Disabled.args = {
   label: 'Button',
   isDisabled: true,
+}
+
+Disabled.play = async ({ canvasElement }) => {
+  let canvas = within(canvasElement)
+  let disabledButton = await canvas.getByRole('button', { name: /Button/i })
+
+  await expect(disabledButton.className).toContain('cursor-not-allowed')
+  await expect(disabledButton.className).toContain('bg-gray-300')
+
 }
